@@ -1,0 +1,23 @@
+<%- include("./partials/header.ejs") %>
+<div id="colorlib-main">
+    <section class="ftco-section ftco-no-pt ftco-no-pb bg-light">
+        <div class="container px-0">
+            <div class="row no-gutters">
+                <%
+                posts = posts.slice(posts.length - (posts.length - (posts.length % 3)));
+                const rowPattern = [
+                    ["vp", "hp", "hpr"],
+                    ["vp", "vp", "vp"],
+                    ["hp", "hpr", "vp"],
+                    ["vp", "vpr", "vp"]
+                ]
+                rowPattern.forEach((pattern, index) => {
+                    let row = posts.splice(index, 3);
+                    %><%- include("homepage/row.ejs", { posts: row, posts_meta: pattern }) %><%
+                })
+                %>
+            </div>
+        </div>
+    </section>
+</div>
+<%- include("./partials/footer.ejs") %>

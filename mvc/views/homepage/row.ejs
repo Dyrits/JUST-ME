@@ -1,0 +1,19 @@
+<% for(let index = 0; index < posts.length; index ++) {
+    if (posts_meta[index].includes("hp")) {
+%>
+    <div class="col-md-8 d-flex">
+        <div class="row">
+            <div class="col-md-12 d-flex">
+                <%- include("post.ejs", { post: posts[index], post_meta: posts_meta[index] }) %>
+            </div>
+            <div class="col-md-12 d-flex">
+                <%- include("post.ejs", { post: posts[++index], post_meta: posts_meta[index] }) %>
+            </div>
+        </div>
+    </div>
+    <% } else {%>
+    <div class="col-md-4 d-flex">
+        <%- include("post.ejs", { post: posts[index], post_meta: posts_meta[index] }) %>
+    </div>
+    <% }
+} %>
