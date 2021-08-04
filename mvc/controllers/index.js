@@ -6,7 +6,15 @@ const getHomePage = function(req, res) {
 
 const getBlogPost = function({ params }, res) {
     let post = data.find(post => post.id === Number(params.id));
-    res.render("post", { title: post.title, post: post })
+    post ? res.render("post", { title: post.title, post: post }) : res.redirect("/404");
 }
 
-module.exports = { getHomePage, getBlogPost };
+const get404 = function(req, res) {
+    res.render("404", { title: "Not Found" })
+}
+
+const redirect404 = function(req, res) {
+    res.redirect("/404");
+}
+
+module.exports = { getHomePage, getBlogPost, get404, redirect404 };

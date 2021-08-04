@@ -7,4 +7,8 @@ router.get('/', controller.getHomePage);
 
 router.get("/posts/:id", controller.getBlogPost);
 
+router.get("/404", controller.get404);
+
+router.get("*", controller.redirect404);
+
 module.exports = router;
