@@ -598,6 +598,9 @@ let data = [
     }
 ];
 
+let tags = new Set();
+let categories = {};
+
 function deepCount(comments) {
     let count = comments.length;
     comments.forEach(comment => {
@@ -609,6 +612,10 @@ function deepCount(comments) {
 data.forEach((post, index) => {
     post.id = index + 842;
     post.numOfComments = deepCount(post.comments);
+    post.tags.forEach(tag => { tags.add(tag); })
+    categories[post.category] ? categories[post.category] ++ : (categories[post.category] = 1);
 });
 
-module.exports = { data };
+tags = [...tags];
+
+module.exports = { data, tags, categories };

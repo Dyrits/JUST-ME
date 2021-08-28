@@ -7,6 +7,8 @@ router.get('/', controller.getHomePage);
 
 router.get("/posts/:id", controller.getBlogPost);
 
+router.get("/filter", controller.getFilteredList)
+
 router.get("/404", controller.get404);
 
 router.get("/about", controller.getAbout);

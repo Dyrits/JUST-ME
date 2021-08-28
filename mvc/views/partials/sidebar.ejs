@@ -3,11 +3,19 @@
     <h1 id="colorlib-logo" class="mb-4"><a href="/">ionize</a></h1>
     <nav id="colorlib-main-menu" role="navigation">
         <ul>
-            <li <% if (active === "index") { %> class="colorlib-active" <% } %>><a href="/">Home</a></li>
+            <li <% if (locals.active && active === "index") { %> class="colorlib-active" <% } %>><a href="/">Home</a></li>
+            <li class="text-white" style="cursor: default">Blog</li>
+            <div class="ml-4">
+                <% for(let category of Object.keys(categories)) { %>
+                    <li <% if (locals.active && active === category) { %> class="colorlib-active" <% } %>>
+                        <a href="/filter?category=<%= category %>" class="text-capitalize"><%=category%></a>
+                    </li>
+                <% } %>
+            </div>
             <li><a href="/">Travel</a></li>
             <li><a href="/">Lifestyle</a></li>
-            <li <% if (active === "about") { %> class="colorlib-active" <% } %>><a href="/about">About</a></li>
-            <li <% if (active === "contact") { %> class="colorlib-active" <% } %>><a href="/contact">Contact</a></li>
+            <li <% if (locals.active && active === "about") { %> class="colorlib-active" <% } %>><a href="/about">About</a></li>
+            <li <% if (locals.active && active === "contact") { %> class="colorlib-active" <% } %>><a href="/contact">Contact</a></li>
         </ul>
     </nav>
 
